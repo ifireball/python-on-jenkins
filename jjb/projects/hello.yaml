@@ -1,0 +1,4 @@
+- project:
+    name: hello
+    jobs:
+      - hello-world-freestyle

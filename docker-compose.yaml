@@ -1,0 +1,15 @@
+version: '2'
+services:
+  jenkins:
+    build:
+      context: .
+    ports:
+      - "8080:8080"
+    volumes:
+      - /var/jenkins_home
+    environment:
+      JAVA_OPTS: >
+        -XX:+UseParallelGC -XX:MinHeapFreeRatio=20 -XX:MaxHeapFreeRatio=40
+        -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90
+        -XX:MaxMetaspaceSize=1000m
+

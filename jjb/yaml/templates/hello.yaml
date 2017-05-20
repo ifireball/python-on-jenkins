@@ -1,0 +1,6 @@
+- job-template:
+    name: hello-world-freestyle
+    builders:
+      - shell: |
+          echo "Hello world!"
+
