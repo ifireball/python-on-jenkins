@@ -1,0 +1,9 @@
+- job-template:
+    name: hello-tool-freestyle
+    scms:
+      - python-on-jenkins
+    builders:
+      - shell: |
+          cd python-on-jenkins/scripts
+
+          ./hello-cmd.py

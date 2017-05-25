@@ -1,0 +1,7 @@
+- parameter:
+    name: name-params
+    parameters:
+      - string: FIRST_NAME
+        description: Enter your first name here
+      - string: LAST_NAME
+        description: Enter your last name here

@@ -2,3 +2,8 @@
     name: hello
     jobs:
       - hello-world-freestyle
+      - hello-world-pipeline
+      - hello-tool-freestyle
+      - hello-py-freestyle
+      - hello-py-pipeline
+      - hello-world-with-params

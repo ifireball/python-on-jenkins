@@ -1,0 +1,13 @@
+- job-template:
+    name: hello-world-with-params
+    parameters:
+      - string: YOUR_NAME
+        description: Enter your name here
+    builders:
+      - shell: |
+          #!/usr/bin/env python
+          from __future__ import print_function
+          from os import environ
+
+          name = environ.get('YOUR_NAME', 'World')
+          print('Hello {0}!'.format(name))

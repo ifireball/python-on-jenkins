@@ -1,0 +1,10 @@
+- scm:
+    name: python-on-jenkins
+    scms:
+      - git:
+          url: https://github.com/ifireball/python-on-jenkins.git
+          branches:
+            - master
+          basedir: python-on-jenkins
+          clean:
+            before: true
