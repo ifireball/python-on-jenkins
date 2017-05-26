@@ -1,24 +1,9 @@
 - job-template:
     name: hello-py-freestyle
     builders:
-      - shell: |
-          #!/usr/bin/env python
-          from __future__ import print_function
-
-          print('Hello world!')
+      - shell: !include-raw-escape: python/hello-py-freestyle.py
 
 - job-template:
     name: hello-py-pipeline
     project-type: workflow
-    dsl: |
-      node {
-        stage('Say hello') {
-          sh """\
-            #!/usr/bin/env python
-            from __future__ import print_function
-
-            print('Hello world!')
-          """.stripIndent()
-        }
-      }
-
+    dsl: !include-raw-escape: pipelines/hello-py-pipeline.groovy

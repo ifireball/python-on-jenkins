@@ -7,11 +7,4 @@
 - job-template:
     name: hello-world-pipeline
     project-type: workflow
-    dsl: |
-      node {
-        stage('Say hello') {
-          sh """\
-                echo 'Hello world!'
-          """
-        }
-      }
+    dsl: !include-raw-escape: pipelines/hello-world-pipeline.groovy
