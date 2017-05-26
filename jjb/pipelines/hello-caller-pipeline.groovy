@@ -1,6 +1,6 @@
 node {
     stage('Run python') {
-        sh """\
+        sh '''\
             #!/usr/bin/env python
             from __future__ import print_function
             from os import environ
@@ -18,12 +18,12 @@ node {
                 'value': name,
                 }]
             )
-            with open('build_args.json', 'w') as f:
-                json.dump(build_args, f)
-        """.stripIndent()
+            with open('build_spec.json', 'w') as f:
+                json.dump(build_spec, f)
+        '''.stripIndent()
     }
     stage('Launch Job') {
-        build readJSON(file: 'build_args.json')
+        build readJSON(file: 'build_spec.json')
     }
 }
 

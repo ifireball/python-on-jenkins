@@ -11,6 +11,6 @@ set -x
 cd "$JJB_SRC"
 jenkins-jobs test --recursive yaml:projects -o "$jjb_temp"
 find "$jjb_temp" -type f \
-    -printf "mkdir -p '$JOBS_DIR/%P' && mv '%p' '$JOBS_DIR/%P/config.xml'\n" \
+    -printf "mkdir -p '$JOBS_DIR/%P' && mv '%p' '$JOBS_DIR/%P/config.xml.override'\n" \
     | bash -ex
 rm -rfv "$jjb_temp"

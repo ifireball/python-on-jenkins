@@ -7,3 +7,5 @@
       - hello-py-freestyle
       - hello-py-pipeline
       - hello-world-with-params
+      - hello-caller-freestyle
+      - hello-caller-pipeline

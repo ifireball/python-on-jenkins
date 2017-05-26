@@ -1,6 +1,6 @@
 - job-template:
     name: hello-tool-freestyle
-    scms:
+    scm:
       - python-on-jenkins
     builders:
       - shell: |

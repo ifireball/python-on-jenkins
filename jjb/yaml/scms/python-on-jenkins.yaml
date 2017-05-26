@@ -1,6 +1,6 @@
 - scm:
     name: python-on-jenkins
-    scms:
+    scm:
       - git:
           url: https://github.com/ifireball/python-on-jenkins.git
           branches:
@@ -8,3 +8,6 @@
           basedir: python-on-jenkins
           clean:
             before: true
+          per-build-tag: false
+          skip-tag: true
+          wipe-workspace: false
