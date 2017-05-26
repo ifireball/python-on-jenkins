@@ -8,7 +8,7 @@ node {
                 poll: false,
                 url: 'https://github.com/ifireball/python-on-jenkins.git'
             )
-            code = readFile 'jenkins/calculator_processor.py'
+            code = readFile 'scripts/calculator_processor.py'
         }
     }
     stage('Load data') {
@@ -23,7 +23,7 @@ node {
     stage('Run python') {
         withEnv([
             'PYTHONPATH=python-on-jenkins/scripts',
-            "CALCULATOR_STATUS=$calculator_status"
+            "CALCULATOR_STATUS=$status_file"
         ]) {
             sh code
         }

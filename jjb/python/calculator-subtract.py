@@ -6,7 +6,7 @@ from os import environ
 
 number = int(environ['NUMBER'])
 print("got number: {0}".format(number))
-action = (operator.subtract, number)
+action = (operator.sub, number)
 print("Created subtraction action")
 
 with open('job_params.properties', 'w') as f:
