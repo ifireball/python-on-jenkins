@@ -1,0 +1,38 @@
+- job-template: &calculator-action
+    name: calculator-action
+    parameters:
+      - string:
+          name: NUMBER
+          description: Number to operate on
+    scm:
+      - python-on-jenkins
+    wrappers:
+      - inject:
+          properties-content: |
+            PYTHONPATH=python-on-jenkins/scripts
+    publishers:
+      - trigger-parameterized-builds:
+        - project: calculator-processor
+          property-file: job_params.properties
+          condition: SUCCESS
+
+- job-template:
+    <<: *calculator-action
+    name: calculator-add
+    builders:
+      - shell: !include-raw-escape: python/calculator-add.py
+
+- job-template:
+    <<: *calculator-action
+    name: calculator-subtract
+    builders:
+      - shell: !include-raw-escape: python/calculator-subtract.py
+
+- job-template:
+    name: calculator-processor
+    project-type: workflow
+    parameters:
+      - string:
+          name: ACTION
+          description: Calculator action object to run
+    dsl: !include-raw-escape: pipelines/calculator-processor.groovy

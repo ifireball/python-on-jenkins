@@ -1,3 +1,4 @@
+envinject:2.1
 javadoc:1.4
 maven-plugin:2.15.1
 token-macro:2.1

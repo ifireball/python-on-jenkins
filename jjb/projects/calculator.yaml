@@ -1,0 +1,6 @@
+- project:
+    name: calculator
+    jobs:
+      - calculator-add
+      - calculator-subtract
+      - calculator-processor
