@@ -4,7 +4,7 @@
 from __future__ import print_function
 from six.moves import cPickle
 from base64 import b64decode, b64encode
-from bz2 import compress, decompress, BZ2File
+from bz2 import compress, decompress
 from contextlib import contextmanager
 
 
@@ -21,28 +21,19 @@ def object_to_param_str(obj):
 
 
 def object_from_artifact(artifact_file, fallback_cls=None):
-    fd = None
     try:
-        fd = BZ2File(artifact_file)
-        return cPickle.loads(fd.read())
+        with open(artifact_file) as fd:
+            return cPickle.load(fd)
     except IOError as e:
         # errno 2 is 'No such file or directory'
         if e.errno == 2 and fallback_cls is not None:
             return fallback_cls()
         raise
-    finally:
-        if fd is not None:
-            fd.close()
 
 
 def object_to_artifact(obj, artifact_file):
-    fd = None
-    try:
-        fd = BZ2File(artifact_file, 'w')
-        fd.write(cPickle.dumps(obj))
-    finally:
-        if fd is not None:
-            fd.close()
+    with open(artifact_file, 'w') as fd:
+        cPickle.dump(obj, fd)
 
 
 @contextmanager
