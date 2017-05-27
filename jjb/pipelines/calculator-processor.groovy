@@ -1,6 +1,6 @@
 node {
     String code
-    String status_file = 'calculator_status.dat'
+    String status_file = 'state/calculator_status.dat'
 
     stage('Load code') {
         dir('python-on-jenkins') {
@@ -12,6 +12,7 @@ node {
         }
     }
     stage('Load data') {
+        dir('state') { deleteDir(); touch(file: '_dummy_') }
         step([
             $class: 'CopyArtifact',
             filter: status_file,
